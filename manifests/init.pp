@@ -3,7 +3,7 @@ class sentinelone (
 ) inherits sentinelone::params
 {
   package { 'SentinelAgent':
-    ensure => latest,
+    ensure => installed,
     require => Class['subscription_manager'],
   }
   if $management_token {
