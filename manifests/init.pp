@@ -8,7 +8,7 @@ class sentinelone (
   }
   if $management_token {
     exec { 'SentinelRegistration':
-      command => "/opt/sentinelone/bin/sentinelctl management token set $management_token",
+      command => "/opt/sentinelone/bin/sentinelctl management token set $management_token && /opt/sentinelone/bin/sentinelctl control start",
       unless => "/opt/sentinelone/bin/sentinelctl management status | egrep 'Connectivity\s*On'",
       require => Package['SentinelAgent'],
     }
